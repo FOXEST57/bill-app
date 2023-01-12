@@ -1,7 +1,7 @@
 {
   "scripts": {
     "test": "jest --coverage --noStackTrace --silent",
-    "back": "cd d:/dev/OC/P9/Billed-app-FR-Back && npm run run:dev",
+    "back": "npm run run:dev",
     "start": "live-server",
     "watchb": "jest Bills.js --watch",
     "watchn": "jest newBill.js --watch",
