@@ -29,12 +29,8 @@ export const filteredBills = (data, status) => {
 
 export const card = bill => {
   const firstAndLastNames = bill.email.split("@")[0];
-  const firstName = firstAndLastNames.includes(".")
-    ? firstAndLastNames.split(".")[0]
-    : "";
-  const lastName = firstAndLastNames.includes(".")
-    ? firstAndLastNames.split(".")[1]
-    : firstAndLastNames;
+  const firstName = firstAndLastNames.includes(".") ? firstAndLastNames.split(".")[0] : "";
+  const lastName = firstAndLastNames.includes(".") ? firstAndLastNames.split(".")[1] : firstAndLastNames;
 
   return `
     <div class='bill-card' id='open-bill${bill.id}' data-testid='open-bill${
@@ -154,12 +150,15 @@ export default class {
       this.counter++;
     }
 
+    // @pde - Kanban 4 - START
     bills.forEach(bill => {
-      $(`#open-bill${bill.id}`).off("click"); //TODO 4 - On remove l'eventListener existant avant d'en ajouter un
+      $(`#open-bill${bill.id}`).off("click");  // On supprimer l'event listener existant avant d'en ajouter un
       $(`#open-bill${bill.id}`).on("click", e => {
         this.handleEditTicket(e, bill, bills);
       });
     });
+   // @pde - Kanban 4 - END
+
 
     return bills;
   }

@@ -43,7 +43,7 @@ export default class {
         .list()
         .then(snapshot => {
           const bills = snapshot
-            .sort((a, b) => new Date(b.date) - new Date(a.date))
+            .sort((a, b) => new Date(b.date) - new Date(a.date)) // @pde - Kanban 1
             .map(doc => {
               try {
                 return {

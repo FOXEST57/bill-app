@@ -1,6 +1,11 @@
 import VerticalLayout from "./VerticalLayout.js";
 
 export default () => {
+  /* @pde - Kanban 3 :
+    - Ajout des lignes: 63 à 65 pour afficher un message d'erreur en utilisant la classe css de bootstrap 'invalid-feedback' (https://getbootstrap.com/docs/5.3/forms/validation/)
+    - Ajout d'un attribut html à la ligne 62 => accept=".jpg, .jpeg, .png"
+  */
+
   return `
     <div class='layout'>
       ${VerticalLayout(120)}
@@ -56,8 +61,8 @@ export default () => {
                     <label for="file" class="bold-label">Justificatif</label>
                     <input required type="file" class="form-control blue-border" data-testid="file" accept=".jpg, .jpeg, .png"/>
                     <div class="invalid-feedback">
-                    Vous devez selectionner une image au format jpg, jpeg ou png.
-                  </div>
+                      Vous devez selectionner une image au format jpg, jpeg ou png.
+                    </div>
                   </div>
                 </div>
             </div>

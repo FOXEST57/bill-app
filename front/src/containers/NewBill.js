@@ -17,9 +17,8 @@ export default class NewBill {
     this.billId = null;
     new Logout({ document, localStorage, onNavigate });
   }
-
+  // @pde - Kanban 3 - START
   fileValidation = file => {
-    //TODO 3 - On verifie le type de fichier à uploader
     const fileTypes = ["image/jpeg", "image/jpg", "image/png"];
     if (!fileTypes.includes(file.type)) {
       this.document
@@ -32,6 +31,7 @@ export default class NewBill {
       .classList.remove("is-invalid");
     return true;
   };
+  // @pde - Kanban 3 - END
 
   handleChangeFile = async e => {
     e.preventDefault();
@@ -44,8 +44,8 @@ export default class NewBill {
     formData.append("file", file);
     formData.append("email", email);
 
-    this.fileValidation(file) &&
-      this.store //TODO 3 / si type de fichier incorrect, on ne l'envoie pas vers le store
+    this.fileValidation(file) &&        // @pde - Kanban 3 - Appel à la fonction "fileValidation" qui vérifie que le,fichier à la bonne extension.
+      this.store 
         .bills()
         .create({
           data: formData,

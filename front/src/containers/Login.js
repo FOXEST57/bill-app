@@ -50,6 +50,7 @@ export default class Login {
     e.preventDefault();
     const user = {
       type: "Admin",
+      // @pde - Kanban 2 - START
       // email: e.target.querySelector(`input[data-testid="employee-email-input"]`).value, //TODO 1
       // password: e.target.querySelector(
       //   `input[data-testid="employee-password-input"]`
@@ -58,6 +59,7 @@ export default class Login {
       password: e.target.querySelector(
         `input[data-testid="admin-password-input"]`
       ).value,
+      // @pde - Kanban 2 - END
       status: "connected",
     };
     this.localStorage.setItem("user", JSON.stringify(user));
