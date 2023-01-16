@@ -3,17 +3,17 @@
  * @jest-environment jsdom
  */
 import { screen, waitFor, within } from "@testing-library/dom";
-import "@testing-library/jest-dom";
+import "@testing-library/jest-dom"; // @dpe import supplementaire de la librairie pour l'environement test
 import userEvent from "@testing-library/user-event";
 import BillsUI from "../views/BillsUI.js";
 import { bills } from "../fixtures/bills.js";
-import { ROUTES, ROUTES_PATH } from "../constants/routes";
+import { ROUTES, ROUTES_PATH } from "../constants/routes"; // @pde import de la fonction ROUTES
 import { localStorageMock } from "../__mocks__/localStorage.js";
-import mockedStore from "../__mocks__/store";
+import mockedStore from "../__mocks__/store"; // @pde import pour simuler les données du store
 import router from "../app/Router.js";
 import Bills from "../containers/Bills.js";
 
-jest.mock("../app/Store", () => mockedStore);
+jest.mock("../app/Store", () => mockedStore); // @dpe on instencie un mok pour simuler le store
 
 describe("Given I am connected as an employee", () => {
   describe("When I am on Bills Page", () => {
@@ -35,7 +35,7 @@ describe("Given I am connected as an employee", () => {
 
       const windowIcon = screen.getByTestId("icon-window");
       await waitFor(() => windowIcon);
-      expect(windowIcon).toHaveClass("active-icon"); //TODO 5
+      expect(windowIcon).toHaveClass("active-icon"); //@pde - Kaban 5 vérifie si l'element windowIcon pocède bien la class active-icon
     });
 
     test("Then bills should be ordered from earliest to latest", () => {
@@ -51,10 +51,8 @@ describe("Given I am connected as an employee", () => {
       const datesSorted = [...dates].sort(antiChrono);
       expect(dates).toEqual(datesSorted);
     });
-
-    // -------------------------------------------------------- //
-    // -------------------------------------------------------- //
-    // -------------------------------------------------------- //
+    // @ pde ajout tests unitaires start
+   
 
     describe("When I click on New Bill Button", () => {
       test("Then I should be sent on New Bill form", () => {
@@ -83,11 +81,11 @@ describe("Given I am connected as an employee", () => {
         const buttonNewBill = screen.getByRole("button", {
           name: /nouvelle note de frais/i,
         });
-        expect(buttonNewBill).toBeTruthy();
+        expect(buttonNewBill).toBeTruthy(); // @pde verification que le bouton pour créer un nouveau bill existe 
         const handleClickNewBill = jest.fn(bills.handleClickNewBill);
         buttonNewBill.addEventListener("click", handleClickNewBill);
-        userEvent.click(buttonNewBill);
-        expect(handleClickNewBill).toHaveBeenCalled();
+        userEvent.click(buttonNewBill); // @pde on click sur le bouton
+        expect(handleClickNewBill).toHaveBeenCalled(); // @pde on verifie que la fonction handleClickNewBill a bien été appelé
       });
     });
 
@@ -113,25 +111,25 @@ describe("Given I am connected as an employee", () => {
           onNavigate,
           store: mockedStore,
           localStorage: window.localStorage,
-        });
+        }); // @pde on charge les données
 
         document.body.innerHTML = BillsUI({ data: bills });
 
-        const iconEyes = screen.getAllByTestId("icon-eye");
+        const iconEyes = screen.getAllByTestId("icon-eye"); // @dpe recupère tous les éléments du dom ayant l'oeil
 
         const handleClickIconEye = jest.fn(billsPage.handleClickIconEye);
 
         const modale = document.getElementById("modaleFile");
 
-        $.fn.modal = jest.fn(() => modale.classList.add("show")); //mock de la modale Bootstrap
+        $.fn.modal = jest.fn(() => modale.classList.add("show")); // @dpe mock de la modale Bootstrap
 
         iconEyes.forEach(iconEye => {
           iconEye.addEventListener("click", () => handleClickIconEye(iconEye));
           userEvent.click(iconEye);
 
-          expect(handleClickIconEye).toHaveBeenCalled();
+          expect(handleClickIconEye).toHaveBeenCalled(); // @ pde on verifie que la fonction handleClickIconEye a bien été appelé
 
-          expect(modale).toHaveClass("show");
+          expect(modale).toHaveClass("show"); // @pde on vérifie que l'élément modale à bien été affiché
         });
       });
     });
@@ -152,7 +150,7 @@ describe("Given I am connected as an employee", () => {
       });
     });
 
-    //TODO 6 test d'intégration GET
+    // @pde - Kanban 6 test d'intégration GET
     describe("When I navigate to Bills Page", () => {
       test("fetches bills from mock API GET", async () => {
         jest.spyOn(mockedStore, "bills");

@@ -3,10 +3,10 @@
     "test": "jest --coverage --noStackTrace --silent",
     "back": "npm run run:dev",
     "start": "live-server",
-    "watchb": "jest Bills.js --watch",
-    "watchn": "jest newBill.js --watch",
-    "watchd": "jest dashboard.js --watch",
-    "watchl": "jest login.js --watch",
+    "t-bills": "jest Bills.js --watch",
+    "t-newbills": "jest newBill.js --watch",
+    "t-dashboard": "jest dashboard.js --watch",
+    "t-login": "jest login.js --watch",
     "lint": "eslint . --ignore-path .gitignore"
   },
   "jest": {
