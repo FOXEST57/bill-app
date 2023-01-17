@@ -51,7 +51,7 @@ export default class Login {
     const user = {
       type: "Admin",
       // @pde - Kanban 2 - START
-      // email: e.target.querySelector(`input[data-testid="employee-email-input"]`).value, //TODO 1
+      // email: e.target.querySelector(`input[data-testid="employee-email-input"]`).value, 
       // password: e.target.querySelector(
       //   `input[data-testid="employee-password-input"]`
       // ).value,

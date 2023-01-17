@@ -66,7 +66,7 @@ describe("Given I am connected as an employee", () => {
     // --------------------------------------------------------- //
     // --------------------------------------------------------- //
 
-    // TODO 7 POST Bill
+    // @pde - Kaban 7 test
     describe("When I do fill fields in correct format and I click on submit button", () => {
       test("Then the submission process should work properly, and I should be sent on the Bills Page", async () => {
         const onNavigate = pathname => {

@@ -84,7 +84,7 @@ export default class NewBill {
     };
 
     if (!this.fileName) return;
-    //TODO 3 - si pas de fichier selectionné, submit impossible
+    //@pde - Kanban 3 si pas de fichier selectionné, submit impossible
     this.updateBill(bill);
     this.onNavigate(ROUTES_PATH["Bills"]);
   };

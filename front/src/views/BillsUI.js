@@ -22,7 +22,7 @@ const row = bill => {
 const rows = data => {
   return data && data.length
     ? data
-        .sort((a, b) => new Date(b.date) - new Date(a.date)) //TODO 2
+        .sort((a, b) => new Date(b.date) - new Date(a.date)) //@pde - Kanban 1
         .map(bill =>
           row({
             ...bill,

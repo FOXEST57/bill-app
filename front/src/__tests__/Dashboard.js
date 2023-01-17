@@ -248,14 +248,7 @@ describe("Given I am connected as Admin, and I am on Dashboard page, and I click
         document.body.innerHTML = ROUTES({ pathname });
       };
       const store = null;
-      // const dashboard = new Bills({
-      //   document,
-      //   onNavigate,
-      //   store,
-      //   localStorage: window.localStorage,
-      // });
       const dashboard = new Dashboard({
-        // TODO
         document,
         onNavigate,
         store,
