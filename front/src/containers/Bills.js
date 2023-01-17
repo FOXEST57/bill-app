@@ -35,7 +35,7 @@ export default class {
         .list()
         .then(snapshot => {
           const bills = snapshot
-            .sort((a, b) => new Date(b.date) - new Date(a.date)) // @pde - Kanban 1
+            .sort((a, b) => new Date(b.date) - new Date(a.date)) // @pde - Kanban 1 ajout de la methode 'sort' qui permet de trier (les elements d'un tableau) les dates dans le bon ordre (décroissant)
             .map(doc => {
               try {
                 return {
@@ -59,4 +59,4 @@ export default class {
         });
     }
   };
-}
+};

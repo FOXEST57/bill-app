@@ -22,7 +22,7 @@ const row = bill => {
 const rows = data => {
   return data && data.length
     ? data
-        .sort((a, b) => new Date(b.date) - new Date(a.date)) //@pde - Kanban 1
+        .sort((a, b) => new Date(b.date) - new Date(a.date)) // @pde - Kanban 1 ajout de la methode 'sort' qui permet de trier (les elements d'un tableau) les dates dans le bon ordre (décroissant)
         .map(bill =>
           row({
             ...bill,
