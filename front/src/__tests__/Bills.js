@@ -51,16 +51,19 @@ describe("Given I am connected as an employee", () => {
       const datesSorted = [...dates].sort(antiChrono);
       expect(dates).toEqual(datesSorted);
     });
-    // @ pde ajout tests unitaires start
+    // @pde ajout tests unitaires start
    
-
+    // @pde ce test verifie le bon fonctionnement lorsque que l'on clique sur le bouton nouvelle note de frais
     describe("When I click on New Bill Button", () => {
       test("Then I should be sent on New Bill form", () => {
+        // @pde on définie la fonction onNavigate pour remplacer le contenu de la page
         const onNavigate = pathname => {
           document.body.innerHTML = ROUTES({ pathname });
         };
-
-        Object.defineProperty(window, "localStorage", {
+        /* @pde on redéfinie la propriété localStorage de l'objet window pour 
+        utilisé une instance local localStorageMock cela simule le stockage local
+        avec des données pour les test*/
+        Object.defineProperty(window, "localStorage", { 
           value: localStorageMock,
         });
         window.localStorage.setItem(
@@ -69,15 +72,18 @@ describe("Given I am connected as an employee", () => {
             type: "Employee",
           })
         );
+        /* @pde on crée une instance de l'objet "Bills" en lui passant les paramètres 
+        nécessaires, tels que "document", "onNavigate", "store" et "localStorage" */
         const bills = new Bills({
           document,
           onNavigate,
           store: mockedStore,
           localStorage: window.localStorage,
         });
-
+        /* @pde on remplace le contenu du corps de la page en utilisant la fonction "BillsUI" */
         document.body.innerHTML = BillsUI({ data: bills });
-
+        /* @pde on utilise la variable "buttonNewBill" pour récupérer le bouton "nouvelle note de frais" 
+        en se servant de la fonction "screen.getByRole".  */
         const buttonNewBill = screen.getByRole("button", {
           name: /nouvelle note de frais/i,
         });
