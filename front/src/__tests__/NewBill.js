@@ -1,4 +1,3 @@
-/* eslint-disable jest/no-mocks-import */
 /**
  * @jest-environment jsdom
  */
@@ -14,7 +13,7 @@ import { ROUTES, ROUTES_PATH } from "../constants/routes.js";
 import { bills } from "../fixtures/bills.js";
 import router from "../app/Router.js";
 
-jest.mock("../app/Store", () => mockStore);
+jest.mock("../app/Store", () => mockStore); // @pde grace à la fonction jest.mock 'bibliotheque jest' on remplace le store par mockStore qui nous permtra de simuler store avec les données que l'on souihaite sans devoir l'executer
 
 const setNewBill = () => {
   return new NewBill({
@@ -63,8 +62,7 @@ describe("Given I am connected as an employee", () => {
       expect(windowIcon).toHaveClass("active-icon");
     });
 
-    // --------------------------------------------------------- //
-    // --------------------------------------------------------- //
+  
 
     // @pde - Kaban 7 test
     describe("When I do fill fields in correct format and I click on submit button", () => {
@@ -160,9 +158,8 @@ describe("Given I am connected as an employee", () => {
       });
     });
 
-    // --------------------------------------------------------- //
-    // -------------- Valeur par défaut champ PCT -------------- //
-    // --------------------------------------------------------- //
+    // @pde  Valeur par défaut champ PCT 
+   
 
     describe("When nothing has been typed in PCT input", () => {
       test("then the PCT should be 20 by default", () => {
@@ -191,9 +188,9 @@ describe("Given I am connected as an employee", () => {
       });
     });
 
-    // --------------------------------------------------------- //
-    // ------------------ Champs non remplis ------------------- //
-    // --------------------------------------------------------- //
+    
+    // @pde Champs non remplis
+    
 
     describe("When I do not fill fields and I click on submit button", () => {
       test("Then it should stay on newBill page", () => {
@@ -212,9 +209,9 @@ describe("Given I am connected as an employee", () => {
       });
     });
 
-    // --------------------------------------------------------- //
-    // ----------- Mauvais format de fichier uploadé ----------- //
-    // --------------------------------------------------------- //
+   
+    // @pde Mauvais format de fichier uploadé 
+   
 
     describe("When I am on NewBill page and I upload a file with an extension other than jpg, jpeg or png", () => {
       test("Then an error message for the file input should be displayed", () => {
@@ -243,9 +240,9 @@ describe("Given I am connected as an employee", () => {
       });
     });
 
-    // --------------------------------------------------------- //
-    // ------------- Bon format de fichier uploadé ------------- //
-    // --------------------------------------------------------- //
+   
+    // @pde Bon format de fichier uploadé 
+    
 
     describe("When I am on NewBill page and I upload a file with an extension jpg, jpeg or png", () => {
       test("Then no error message for the file input should be displayed", () => {
@@ -318,9 +315,9 @@ describe("Given I am connected as an employee", () => {
   });
 });
 
-// -------------------------------------------------------------- //
-// ---------------------------- UTILS --------------------------- //
-// -------------------------------------------------------------- //
+
+// @pde UTILS 
+
 
 const selectExpenseType = expenseType => {
   const dropdown = screen.getByRole("combobox");
