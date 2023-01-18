@@ -168,7 +168,7 @@ describe("Given I am connected as an employee", () => {
       });
     });
 
-    // @pde - Kanban 6 test d'intégration GET
+    // @pde - Kanban 6 test d'intégration GET pour verifier les fonctionnalités sur la page Bills
     describe("When I navigate to Bills Page", () => {
       /* @pde dans ce premier test on vérifie que lorsque l'utilisateur navigue 
       vers la page bills, les bills sont correctement récupérées à partir 
