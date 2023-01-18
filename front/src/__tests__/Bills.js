@@ -87,7 +87,7 @@ describe("Given I am connected as an employee", () => {
         const buttonNewBill = screen.getByRole("button", {
           name: /nouvelle note de frais/i,
         });
-        expect(buttonNewBill).toBeTruthy(); // @pde verification que le bouton pour créer un nouveau bill existe 
+        expect(buttonNewBill).toBeTruthy(); // @pde verification que le bouton  pour créer un nouveau bill existe 
         const handleClickNewBill = jest.fn(bills.handleClickNewBill);
         buttonNewBill.addEventListener("click", handleClickNewBill);
         userEvent.click(buttonNewBill); // @pde on click sur le bouton
@@ -125,12 +125,11 @@ describe("Given I am connected as an employee", () => {
         document.body.innerHTML = BillsUI({ data: bills });
         // @pde on récupère tous les éléménts du DOM ayant pour ID "icon-eye"
         const iconEyes = screen.getAllByTestId("icon-eye"); 
-        // @pde on gère les clics sur ces éléments
+        // @pde on créé la fonction jest pour gérer les clics sur ces éléments
         const handleClickIconEye = jest.fn(billsPage.handleClickIconEye);
         // @pde on récupère tous les éléménts du DOM ayant pour ID "modaleFile"
         const modale = document.getElementById("modaleFile");
-
-        $.fn.modal = jest.fn(() => modale.classList.add("show")); // @dpe mock de la modale Bootstrap
+        $.fn.modal = jest.fn(() => modale.classList.add("show")); 
         // @pde on simule un clic sur chaque éléments
         iconEyes.forEach(iconEye => {
           iconEye.addEventListener("click", () => handleClickIconEye(iconEye));
