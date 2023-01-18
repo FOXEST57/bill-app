@@ -35,8 +35,7 @@ export default class NewBill {
 
   handleChangeFile = async e => {
     e.preventDefault();
-    const file = this.document.querySelector(`input[data-testid="file"]`)
-      .files[0];
+    const file = this.document.querySelector(`input[data-testid="file"]`).files[0];
     const filePath = e.target.value.split(/\\/g);
     const fileName = filePath[filePath.length - 1];
     const formData = new FormData();

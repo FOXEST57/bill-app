@@ -24,7 +24,7 @@ const setNewBill = () => {
   });
 };
 
-beforeAll(() => {
+beforeAll(() => { // @ pde est créé une seul fois pour tous les tests
   Object.defineProperty(window, "localStorage", {
     value: localStorageMock,
   });
@@ -38,7 +38,7 @@ beforeAll(() => {
   );
 });
 
-beforeEach(() => {
+beforeEach(() => {  // @pde permet a cette fonction d'être utilisé par chaque test
   const root = document.createElement("div");
   root.setAttribute("id", "root");
   document.body.append(root);
@@ -49,7 +49,7 @@ beforeEach(() => {
   window.onNavigate(ROUTES_PATH.NewBill);
 });
 
-afterEach(() => {
+afterEach(() => { // @pde efface tous ce qui a été créé dans le beforeEach
   jest.resetAllMocks();
   document.body.innerHTML = "";
 });
