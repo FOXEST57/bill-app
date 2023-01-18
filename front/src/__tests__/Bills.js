@@ -136,7 +136,6 @@ describe("Given I am connected as an employee", () => {
           userEvent.click(iconEye);
           // @pde on vérifie que la fonction handleClickIconEye soit bien appelé 
           expect(handleClickIconEye).toHaveBeenCalled(); // @ pde on verifie que la fonction handleClickIconEye a bien été appelé
-          // @pde on vérifie que le modale soit bien affiché
           expect(modale).toHaveClass("show"); // @pde on vérifie que l'élément modale à bien été affiché
         });
       });
@@ -216,7 +215,7 @@ describe("Given I am connected as an employee", () => {
         });
         window.onNavigate(ROUTES_PATH.Bills);// @pde on simule la navigation de l'utilisateur vers la page Bills
         await new Promise(process.nextTick);// @pde on attend que la promesse soit résolue
-        const message = screen.getByText(/Erreur 404/);// @pde on recherche le message d'erreur "Erreur 404" sur la page
+        const message = screen.getByText(/Erreur 404/);// @pde on recherche le texte message d'erreur "Erreur 404" sur la page
         expect(message).toBeTruthy();// @pde on vérifie que le message est présent dans la page.
       });
       // @pde idem que le test précédent avec l'erreur 500
