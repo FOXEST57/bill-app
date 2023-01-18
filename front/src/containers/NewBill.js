@@ -19,7 +19,7 @@ export default class NewBill {
   }
   // @pde - Kanban 3 - START
   fileValidation = file => {
-    const fileTypes = ["image/jpeg", "image/jpg", "image/png"];
+    const fileTypes = ["image/jpeg", "image/jpg", "image/png", "application/pdf"];
     if (!fileTypes.includes(file.type)) {
       this.document
         .querySelector(`input[data-testid="file"]`)
